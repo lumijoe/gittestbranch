@@ -29,7 +29,7 @@ while (have_posts()) : the_post(); ?>
                     $terms = get_the_terms(get_the_ID(), 'product_category');
                     if ($terms) {
                         foreach ($terms as $term) {
-                            echo $term->name . ' '; // カテゴリ名を表示
+                            echo esc_html($term->name) . ' '; // カテゴリ名を表示
                         }
                     }
                 ?>
@@ -44,6 +44,19 @@ while (have_posts()) : the_post(); ?>
                     </div>
                 <?php endif; ?>
             </div>
+
+            <!-- 追加: 画像フィールド (product_image02) -->
+            <div class="product-gallery">
+                <?php $product_image02 = get_field('product_image02'); ?>
+                <?php if ($product_image02): ?>
+                    <img src="<?php echo esc_url($product_image02['url']); ?>" 
+                         alt="<?php echo esc_attr($product_image02['alt']); ?>" 
+                         title="<?php echo esc_attr($product_image02['title']); ?>" 
+                         width="<?php echo esc_attr($product_image02['width']); ?>" 
+                         height="<?php echo esc_attr($product_image02['height']); ?>">
+                <?php endif; ?>
+            </div>
+
         </div>
     </section>
 </main>
