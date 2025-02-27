@@ -29,4 +29,11 @@ function theme_enqueue_assets() {
     array('jquery'), '1.0.0', true);
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_assets');
+
+function my_theme_setup() {
+    register_nav_menus(array(
+        'main_menu' => 'メインメニュー'
+    ));
+}
+add_action('after_setup_theme', 'my_theme_setup');
 ?>
