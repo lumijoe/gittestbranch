@@ -9,7 +9,7 @@ html, body {
     // }
 }
 .carousel-inner {
-    .active {
+    .carousel-item, .active {
         height: 500px;
     }
 

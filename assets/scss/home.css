@@ -5,6 +5,6 @@ html, body {
   font-style: normal;
 }
 
-.carousel-inner .active {
+.carousel-inner .carousel-item, .carousel-inner .active {
   height: 500px;
 }/*# sourceMappingURL=home.css.map */
