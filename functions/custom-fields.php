@@ -104,6 +104,16 @@ function custom_rewrite_rules() {
         'index.php?post_type=products',
         'top'
     );
+    add_rewrite_rule(
+                '^products/([^/]+)/?$',
+                'index.php?product_category=$matches[1]',
+                'top'
+            );
+            add_rewrite_rule(
+                '^products/?$',
+                'index.php?post_type=products',
+                'top'
+            );
 }
 add_action('init', 'custom_rewrite_rules');
 
@@ -119,4 +129,7 @@ function flush_rewrite_rules_on_theme_switch() {
     flush_rewrite_rules();
 }
 add_action('after_switch_theme', 'flush_rewrite_rules_on_theme_switch');
+
+
+
 ?>
