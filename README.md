@@ -1,74 +1,77 @@
 # codetest
 
 # ダミー画像
+
 <!-- https://placehold.jp/ -->
 
-# font 
+# font
 
 # reset.css
+
 @charset "utf-8";
 
 body, div, dl, dt, dd, ul, ol, li,
 h1, h2, h3, h4, h5, h6,
 pre, code, form, fieldset, legend,
 input, textarea, p, blockquote, th, td, xmp {
-    margin: 0;
-    padding: 0;
+margin: 0;
+padding: 0;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+border-collapse: collapse;
+border-spacing: 0;
 }
 
 fieldset, img {
-    border: 0;
+border: 0;
 }
 
 ol, ul {
-    list-style: none;
+list-style: none;
 }
 
 caption, th {
-    text-align: left;
+text-align: left;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-size: 100%;
-    font-weight: normal;
+font-size: 100%;
+font-weight: normal;
 }
 
-* {
-    box-sizing: border-box;
-}
+- {
+  box-sizing: border-box;
+  }
 
-/* body {
-    color: #222;
-    background-color: #fff;
-} */
+/_ body {
+color: #222;
+background-color: #fff;
+} _/
 
 img {
-    max-width: 100%;
-    vertical-align: bottom;
+max-width: 100%;
+vertical-align: bottom;
 }
 
 input, textarea, select {
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    font-size: 100%;
+font-family: inherit;
+font-size: inherit;
+font-weight: inherit;
+font-size: 100%;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+color: inherit;
+text-decoration: none;
 }
 
 a, button {
-    cursor: pointer;
+cursor: pointer;
 }
 
 # footer.php
+
 <?php
 //====================================================
 //  Template Name: Footer
@@ -83,9 +86,8 @@ a, button {
 </html>
 <!-- bloginfoは管理画面の設定一般サイトのタイトルが適用される -->
 
-
-
 # header.php
+
 <?php
 //====================================================
 //  Template Name: Header
@@ -160,9 +162,8 @@ a, button {
         </div>
     </header>
 
-
-
 # index.php
+
 <?php
 // Fallback index.php
 get_header();
@@ -172,8 +173,8 @@ get_footer();
 
 <!-- front-page.phpがあっても、index.phpがないとテーマ反映できない -->
 
-
 # front-page.php
+
 <?php
 
 /**
@@ -237,16 +238,17 @@ get_header();
 
 <?php get_footer(); ?>
 
-
 # style.css
-/*
+
+/_
 Theme Name: codetest_theme
 Author: lk
 Description: This is the theme of codetest
 Version: 1.0.0
-*/
+_/
 
 # functions.php
+
 <?php
 function theme_enqueue_assets() {
     // WordPress の jQuery を登録（必要なら無効化してCDN版を使うことも可）
@@ -279,10 +281,13 @@ function theme_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_assets');
 ?>
-　
+
+
+
 <!-- コンソールログに書かれているか確認すること！ -->
 
 # index.html
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -410,19 +415,21 @@ add_action('wp_enqueue_scripts', 'theme_enqueue_assets');
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="./assets/js/main.js"></script>
+
 </body>
 </html>
 
 <!-- 　ここにはwordpressのJquery系書いてないため、functions.phpで追加しているものを参考にすること！ -->
 
+# 外観テーマにメニューナビを表示させるには functions.php に追加する
 
-# 外観テーマにメニューナビを表示させるにはfunctions.phpに追加する
 function my_theme_setup() {
-    register_nav_menus(array(
-        'main_menu' => 'メインメニュー'
-    ));
+register_nav_menus(array(
+'main_menu' => 'メインメニュー'
+));
 }
 add_action('after_setup_theme', 'my_theme_setup');
+
 <!-- これで管理画面に表示されるようになる -->
 <!-- カスタムフィールドやたくそのミーなどの設定も踏まえた更新もの -->
 <?php
@@ -491,3 +498,38 @@ function add_default_product_categories() {
 add_action('init', 'add_default_product_categories');
 
 ?>
+
+## ACF 画像設定
+
+<div class="product-gallery">
+                <div>
+                    <?php $product_image01 = get_field('product_image01'); ?>
+                    <?php if ($product_image01): ?>
+                        <img src="<?php echo esc_url($product_image01['url']); ?>" 
+                            alt="<?php echo esc_attr($product_image01['alt']); ?>" 
+                            title="<?php echo esc_attr($product_image01['title']); ?>" 
+                            width="<?php echo esc_attr($product_image01['width']); ?>" 
+                            height="<?php echo esc_attr($product_image01['height']); ?>">
+                    <?php endif; ?>
+                </div>
+                <div>
+                    <?php $product_image02 = get_field('product_image02'); ?>
+                    <?php if ($product_image02): ?>
+                        <img src="<?php echo esc_url($product_image02['url']); ?>" 
+                            alt="<?php echo esc_attr($product_image02['alt']); ?>" 
+                            title="<?php echo esc_attr($product_image02['title']); ?>" 
+                            width="<?php echo esc_attr($product_image02['width']); ?>" 
+                            height="<?php echo esc_attr($product_image02['height']); ?>">
+                    <?php endif; ?>
+                </div>
+                <div>
+                    <?php $product_image03 = get_field('product_image03'); ?>
+                    <?php if ($product_image03): ?>
+                        <img src="<?php echo esc_url($product_image03['url']); ?>" 
+                            alt="<?php echo esc_attr($product_image03['alt']); ?>" 
+                            title="<?php echo esc_attr($product_image03['title']); ?>" 
+                            width="<?php echo esc_attr($product_image03['width']); ?>" 
+                            height="<?php echo esc_attr($product_image03['height']); ?>">
+                    <?php endif; ?>
+                </div>
+            </div>

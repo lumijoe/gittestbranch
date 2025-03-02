@@ -54,8 +54,8 @@ while (have_posts()) : the_post(); ?>
                         <img src="<?php echo esc_url($product_image01['url']); ?>" 
                             alt="<?php echo esc_attr($product_image01['alt']); ?>" 
                             title="<?php echo esc_attr($product_image01['title']); ?>" 
-                            width="<?php echo esc_attr($product_image01['width']); ?>" 
-                            height="<?php echo esc_attr($product_image01['height']); ?>">
+                            width="320px" 
+                            height="auto">
                     <?php endif; ?>
                 </div>
                 <div>
@@ -64,8 +64,8 @@ while (have_posts()) : the_post(); ?>
                         <img src="<?php echo esc_url($product_image02['url']); ?>" 
                             alt="<?php echo esc_attr($product_image02['alt']); ?>" 
                             title="<?php echo esc_attr($product_image02['title']); ?>" 
-                            width="<?php echo esc_attr($product_image02['width']); ?>" 
-                            height="<?php echo esc_attr($product_image02['height']); ?>">
+                            width="320px" 
+                            height="auto">
                     <?php endif; ?>
                 </div>
                 <div>
@@ -74,8 +74,8 @@ while (have_posts()) : the_post(); ?>
                         <img src="<?php echo esc_url($product_image03['url']); ?>" 
                             alt="<?php echo esc_attr($product_image03['alt']); ?>" 
                             title="<?php echo esc_attr($product_image03['title']); ?>" 
-                            width="<?php echo esc_attr($product_image03['width']); ?>" 
-                            height="<?php echo esc_attr($product_image03['height']); ?>">
+                            width="320px" 
+                            height="auto">
                     <?php endif; ?>
                 </div>
             </div>
