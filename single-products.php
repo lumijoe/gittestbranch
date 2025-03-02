@@ -11,7 +11,7 @@ while (have_posts()) : the_post(); ?>
 <main>
     <section>
         <div class="product-details">
-            <!-- 製品名 -->
+            <!-- ACF：製品名 -->
             <!-- <h1><?php the_title(); ?></h1> -->
              <p>
                 <?php the_field('product_name01'); ?><br>
@@ -19,7 +19,7 @@ while (have_posts()) : the_post(); ?>
                 <?php the_field('product_name03'); ?><br>
             </p>
 
-            <!-- 分野カテゴリ -->
+            <!-- functions.php：分野カテゴリ -->
             <p><strong>分野カテゴリ:</strong> 
                 <?php 
                     $terms = get_the_terms(get_the_ID(), 'product_category');
@@ -31,7 +31,7 @@ while (have_posts()) : the_post(); ?>
                 ?>
             </p>
 
-            <!-- 課題カテゴリ -->
+            <!-- functions.php：課題カテゴリ -->
             <p><strong>課題カテゴリ:</strong> 
                 <?php 
                     $issues_terms = get_the_terms(get_the_ID(), 'issues');
@@ -46,7 +46,7 @@ while (have_posts()) : the_post(); ?>
             </p>
 
 
-            <!-- 追加: 画像フィールド (product_image01~03) -->
+            <!-- ACF: 画像フィールド (product_image01~03) -->
             <div class="product-gallery">
                 <div>
                     <?php $product_image01 = get_field('product_image01'); ?>
@@ -80,7 +80,7 @@ while (have_posts()) : the_post(); ?>
                 </div>
             </div>
 
-            <!-- コンテンツ説明フィールド -->
+            <!-- ACF：コンテンツ説明フィールド -->
             <div class="product-items">
                 <div>
                     <p>
