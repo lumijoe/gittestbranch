@@ -12,16 +12,12 @@ while (have_posts()) : the_post(); ?>
     <section>
         <div class="product-details">
             <!-- 製品名 -->
-            <h1><?php the_title(); ?></h1>
-
-            <!-- 価格 -->
-            <p><strong>価格:</strong> <?php the_field('price'); ?> 円</p>
-
-            <!-- メーカー -->
-            <p><strong>メーカー:</strong> <?php the_field('manufacturer'); ?></p>
-
-            <!-- 発売日 -->
-            <p><strong>発売日:</strong> <?php the_field('release_date'); ?></p>
+            <!-- <h1><?php the_title(); ?></h1> -->
+             <p>
+                <?php the_field('product_name01'); ?><br>
+                <?php the_field('product_name02'); ?><br>
+                <?php the_field('product_name03'); ?><br>
+            </p>
 
             <!-- 分野カテゴリ -->
             <p><strong>分野カテゴリ:</strong> 
@@ -35,28 +31,72 @@ while (have_posts()) : the_post(); ?>
                 ?>
             </p>
 
-            <!-- 画像コンテンツ（oEmbedの場合） -->
-            <div class="product-image">
-                <?php $product_image = get_field('product_image'); ?>
-                <?php if ($product_image): ?>
-                    <div class="embed-container">
-                        <?php echo wp_oembed_get($product_image); ?>
-                    </div>
-                <?php endif; ?>
-            </div>
+            <!-- 課題カテゴリ -->
+            <p><strong>課題カテゴリ:</strong> 
+                <?php 
+                    $issues_terms = get_the_terms(get_the_ID(), 'issues');
+                    if ($issues_terms && !is_wp_error($issues_terms)) {
+                        foreach ($issues_terms as $issues_term) {
+                            echo esc_html($issues_term->name) . ' '; // ターム名を表示
+                        }
+                    } else {
+                        echo '課題カテゴリが設定されていません'; // タクソノミーが設定されていない場合
+                    }
+                ?>
+            </p>
 
-            <!-- 追加: 画像フィールド (product_image02) -->
+
+            <!-- 追加: 画像フィールド (product_image01~03) -->
             <div class="product-gallery">
-                <?php $product_image02 = get_field('product_image02'); ?>
-                <?php if ($product_image02): ?>
-                    <img src="<?php echo esc_url($product_image02['url']); ?>" 
-                         alt="<?php echo esc_attr($product_image02['alt']); ?>" 
-                         title="<?php echo esc_attr($product_image02['title']); ?>" 
-                         width="<?php echo esc_attr($product_image02['width']); ?>" 
-                         height="<?php echo esc_attr($product_image02['height']); ?>">
-                <?php endif; ?>
+                <div>
+                    <?php $product_image01 = get_field('product_image01'); ?>
+                    <?php if ($product_image01): ?>
+                        <img src="<?php echo esc_url($product_image01['url']); ?>" 
+                            alt="<?php echo esc_attr($product_image01['alt']); ?>" 
+                            title="<?php echo esc_attr($product_image01['title']); ?>" 
+                            width="<?php echo esc_attr($product_image01['width']); ?>" 
+                            height="<?php echo esc_attr($product_image01['height']); ?>">
+                    <?php endif; ?>
+                </div>
+                <div>
+                    <?php $product_image02 = get_field('product_image02'); ?>
+                    <?php if ($product_image02): ?>
+                        <img src="<?php echo esc_url($product_image02['url']); ?>" 
+                            alt="<?php echo esc_attr($product_image02['alt']); ?>" 
+                            title="<?php echo esc_attr($product_image02['title']); ?>" 
+                            width="<?php echo esc_attr($product_image02['width']); ?>" 
+                            height="<?php echo esc_attr($product_image02['height']); ?>">
+                    <?php endif; ?>
+                </div>
+                <div>
+                    <?php $product_image03 = get_field('product_image03'); ?>
+                    <?php if ($product_image03): ?>
+                        <img src="<?php echo esc_url($product_image03['url']); ?>" 
+                            alt="<?php echo esc_attr($product_image03['alt']); ?>" 
+                            title="<?php echo esc_attr($product_image03['title']); ?>" 
+                            width="<?php echo esc_attr($product_image03['width']); ?>" 
+                            height="<?php echo esc_attr($product_image03['height']); ?>">
+                    <?php endif; ?>
+                </div>
             </div>
 
+            <!-- コンテンツ説明フィールド -->
+            <div class="product-items">
+                <div>
+                    <p>
+                        <?php the_field('item01_title'); ?><br>
+                        <?php the_field('item01_text'); ?><br>
+                       
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <?php the_field('item02_title'); ?><br>
+                        <?php the_field('item02_text'); ?><br>
+                       
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 </main>
