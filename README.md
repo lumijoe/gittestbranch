@@ -1,5 +1,3 @@
-# codetest
-
 # ダミー画像
 
 <!-- https://placehold.jp/ -->
@@ -241,9 +239,9 @@ get_header();
 # style.css
 
 /_
-Theme Name: codetest_theme
+Theme Name: gittestbranch
 Author: lk
-Description: This is the theme of codetest
+Description: This is the theme of gittestbranch
 Version: 1.0.0
 _/
 
@@ -281,8 +279,6 @@ function theme_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_assets');
 ?>
-
-
 
 <!-- コンソールログに書かれているか確認すること！ -->
 
